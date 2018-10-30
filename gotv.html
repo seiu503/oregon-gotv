@@ -21,8 +21,8 @@
 <meta name="twitter:description" content="Oregon GOTV Reporting" />
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
-<link rel='stylesheet' id='google-fonts-css'  href='//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C800%7CNunito%3A400%2C700%7CSource+Sans+Pro%3A400%2C700&subset=latin-ext%2Cvietnamese&ver=4.9.1' type='text/css' media='all' />
-<link rel="stylesheet" id="font-awesome-css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.9.1" type="text/css" media="all">
+<link rel='stylesheet' id='google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C700%2C800%7CNunito%3A400%2C700%7CSource+Sans+Pro%3A400%2C700&subset=latin-ext%2Cvietnamese&ver=4.9.1' type='text/css' media='all' />
+<link rel="stylesheet" id="font-awesome-css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.9.1" type="text/css" media="all">
 <link rel="stylesheet" id="custom-css-formassembly" href="https://seiu503signup.org/css/every-action-seiu503.css" type="text/css" media="all" />
         <link rel="apple-touch-icon" href="https://theoregonvoterguide.org/wp-content/themes/ovg/library/images/apple-touch-icon.png">
         <link rel="icon" href="https://theoregonvoterguide.org/wp-content/themes/ovg/favicon.png">
@@ -36,6 +36,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(){
+            // set date field to current date
+            const today = (new Date).getDate().toString();
+            const yesterday = today === "1" ? "31" : (parseInt(today) - 1).toString();
+            const dateMap = {
+                "29": "tfa_156",
+                "30": "tfa_157",
+                "31": "tfa_158",
+                "1": "tfa_159",
+                "2": "tfa_160",
+                "3": "tfa_161",
+                "4": "tfa_162",
+                "5": "tfa_163",
+                "6": "tfa_164"
+            }
+            console.log(dateMap[today]);
+            const selected = dateMap[today];
+            const unselected = dateMap[yesterday];
+            document.getElementById(unselected).selected = false;
+            document.getElementById(selected).selected = true;
+
             const FORM_TIME_START = Math.floor((new Date).getTime()/1000);
             let formElement = document.getElementById("tfa_0");
             if (null === formElement) {
